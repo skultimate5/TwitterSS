@@ -1,0 +1,9 @@
+<div class="row">
+    <h1>Home Page</h1>
+    <div ng-show="signedIn">You are signed in!
+        <div>
+            <input type="text" placeholder="Search for a user" ng-model="searchTerm">
+            <input type="button" value="Search" class="btn btn-primary" ng-click="searchTwitter(searchTerm)"/> 
+        </div>
+    </div>
+</div>
