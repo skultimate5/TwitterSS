@@ -54,9 +54,21 @@ router.post('/twitter/getUserTimeline', (req, res) => {
 
     //TODO : use max id to get tweets after the first 200
 
-    client.get('statuses/user_timeline', {screen_name: searchUser, count: 200}, (error, tweets, response) => {
+    client.get('statuses/user_timeline', {screen_name: searchUser, count: 50}, (error, tweets, response) => {
         if (error) {
             console.log('ERROR : Getting User Timeline')
+        }
+        res.json(tweets)
+    })
+})
+
+router.post('/twitter/getUserFavorites', (req, res) => {
+    var username = req.body.username,
+        client = getClient(req)
+
+    client.get('favorites/list', {screen_name: username, count: 50}, (error, tweets, response) => {
+        if (error) {
+            console.log('ERROR : Getting User Favorites')
         }
         res.json(tweets)
     })

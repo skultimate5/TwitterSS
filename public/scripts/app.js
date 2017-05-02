@@ -1,6 +1,6 @@
 'use strict'
 
-var app = angular.module('app', ['ngRoute', 'ngCookies'])/*, ['api', 'ngResource', 'ngCookies'])*/
+var app = angular.module('app', ['ngRoute', 'ngCookies', 'angularUtils.directives.dirPagination'])
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $routeProvider.

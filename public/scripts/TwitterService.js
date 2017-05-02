@@ -58,5 +58,23 @@ window.angular.module('app').service('TwitterService', [ '$http', '$q', function
         return deferred.promise
 	}
 
+    twitterService.getUserFavorites = function(username, accessToken, tokenSecret){
+        var body = JSON.stringify({   
+                'userKey': accessToken,
+                'userSecret': tokenSecret,
+                'username': username
+            }),
+            deferred = $q.defer()
+
+		$http.post('/twitter/getUserFavorites', body).then((user) => {
+            deferred.resolve(user.data)
+        })
+        .catch((err) => {
+            deferred.reject(err)
+        })
+
+        return deferred.promise
+	}
+
 	return twitterService
 }])
